@@ -42,6 +42,10 @@ class Api
      * @var bool
      */
     private $returnTransfer = true;
+    /**
+     * @var string
+     */
+    private $error = "";
 
     /**
      * Constructor for Api class.
@@ -51,7 +55,7 @@ class Api
      * @param bool $production
      * @param string $post
      */
-    function __construct($method, $url, $returnTransfer, $production = false, $post = "") {
+    public function __construct($method, $url, $returnTransfer, $production = false, $post = "") {
         $this->setMethod($method);
         $this->setPostData($post);
         $this->setUrl($url);
@@ -66,133 +70,145 @@ class Api
     /**
      * @param $method
      */
-    function setMethod($method) {
+    public function setMethod($method) {
         $this->method = $method;
     }
 
     /**
      * @param $url
      */
-    function setCurl($url) {
+    public function setCurl($url) {
         $this->curl = curl_init($url);
     }
 
     /**
      * @param $url
      */
-    function setUrl($url) {
+    public function setUrl($url) {
         $this->url = $url;
     }
 
     /**
      * @param $response
      */
-    function setResponse($response) {
+    public function setResponse($response) {
         $this->response = $response;
     }
 
     /**
      * @param $httpCode
      */
-    function setHttpCode($httpCode) {
+    public function setHttpCode($httpCode) {
         $this->httpCode = $httpCode;
     }
 
     /**
      * @param $returnTransfer
      */
-    function setReturnTransfer($returnTransfer) {
+    public function setReturnTransfer($returnTransfer) {
         $this->returnTransfer = $returnTransfer;
     }
 
     /**
      * @param $result
      */
-    function setResult($result) {
+    public function setResult($result) {
         $this->result = $result;
     }
 
     /**
      * @param $result
      */
-    function setResultArray($result) {
+    public function setResultArray($result) {
         $this->resultArray = json_decode($result, TRUE);
     }
 
     /**
      * @param $post
      */
-    function setPostData($post) {
-        $this->post = $post;
+    public function setPostData($post) {
+        $this->post = json_encode($post);
     }
-
+    /**
+     * @param $error
+     */
+    public function setError($error) {
+        $this->error = $error;
+    }
+    
     /**
      * @return string
      */
-    function getMethod() {
+    public function getMethod() {
         return $this->method;
     }
 
     /**
      * @return string
      */
-    function getUrl() {
+    public function getUrl() {
         return $this->url;
     }
 
     /**
      * @return mixed
      */
-    function getCurl() {
+    public function getCurl() {
         return $this->curl;
     }
 
     /**
      * @return string
      */
-    function getResponse() {
+    public function getResponse() {
         return $this->response;
     }
 
     /**
      * @return int
      */
-    function getHttpCode() {
+    public function getHttpCode() {
         return $this->httpCode;
     }
 
     /**
      * @return bool
      */
-    function getReturnTransfer() {
+    public function getReturnTransfer() {
         return $this->returnTransfer;
     }
 
     /**
      * @return string
      */
-    function getResult() {
+    public function getResult() {
         return $this->result;
     }
 
     /**
      * @return array
      */
-    function getResultArray() {
+    public function getResultArray() {
         return $this->resultArray;
     }
 
     /**
      * @return string
      */
-    function getPostData() {
+    public function getPostData() {
         return $this->post;
     }
-
+    /**
+     * @return string
+     */
+    public function getError() {
+        return $this->error;
+    }
+    
     /**
      * This function calls the API using the specific HTTP method.
      */
-    function callApi() {
+    public function callApi() {
         try {
             switch ($this->getMethod()) {
 
@@ -206,6 +222,7 @@ class Api
                 break;
 
                 case "PUT":
+                    curl_setopt($this->getCurl(), CURLOPT_POSTFIELDS, $this->getPostData());
                     curl_setopt($this->getCurl(), CURLOPT_PUT, 1);
                 break;
 
@@ -226,12 +243,12 @@ class Api
             $this->setHttpCode(curl_getinfo($this->getCurl(), CURLINFO_HTTP_CODE));
 
             //Check for HTTP 200 OK response code
-            if ($this->getHttpCode() != 200) {
-                throw new \Exception("An error has occurred, status code: $this->getHttpCode() ");
+            if ($this->getHttpCode() !== 200) {
+                throw new \Exception("An error has occurred, status code: " . $this->getHttpCode());
             }
             curl_close($this->getCurl());
         } catch (Exception $ex) {
-            echo "An error has occurred: $ex";
+            $this->setError($ex);
         }
     }
 }

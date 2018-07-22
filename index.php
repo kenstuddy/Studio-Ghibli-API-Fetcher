@@ -33,6 +33,11 @@
                         <?= "</div>" ?>
                     <? endforeach; ?>
                 <? endif; ?>
+                <p>
+                    <? if (!empty($ghibli->getError())) : ?>
+                        <?= $ghibli->getError() ?>
+                    <? endif; ?>
+                </p>
             </div>
         </div>
     </body>
