@@ -26,18 +26,20 @@
                     <div id="dialog" style="display:none;"></div>
                 </div>
                 <? if (isset($resultArray)): ?>
-                    <? foreach($resultArray as $key => $value): ?>
-                        <?= "<div class='card'>" ?>
-                        <?= "<h1>" . $value['title'] . "</h1>" ?>
-                        <?= "<p onclick='popup(".$key.")'>" . substr($value['description'], 0, 300) . "...</p>" ?>
-                        <?= "</div>" ?>
-                    <? endforeach; ?>
+                    <?= "<div class='cards'>" ?>
+                        <? foreach($resultArray as $key => $value): ?>
+                            <?= "<div class='card'>" ?>
+                            <?= "<h1>" . $value['title'] . "</h1>" ?>
+                            <?= "<p onclick='popup(".$key.")'>" . substr($value['description'], 0, 300) . "...</p>" ?>
+                            <?= "</div>" ?>
+                        <? endforeach; ?>
+                    <?= "</div>" ?>
                 <? endif; ?>
-                <p>
-                    <? if (!empty($ghibli->getError())) : ?>
-                        <?= $ghibli->getError() ?>
-                    <? endif; ?>
-                </p>
+                <? if (!empty($ghibli->getError())) : ?>
+                    <?= "<p id='error'>" ?>
+                    <?= $ghibli->getError() ?>
+                    <?= "</p>" ?>
+                <? endif; ?>
             </div>
         </div>
     </body>
