@@ -24,4 +24,4 @@ Start the PHP server (0.0.0.0 is the default route, this makes PHP listen on all
 
 ```php -S 0.0.0.0:8000```
 
-Visit the IP address (127.0.0.1 if you are running Linux natively, or the IP address of your VM/VPS/etc) http://127.0.0.1:8000 in your web browser
+Visit the IP address (127.0.0.1 if you are running Linux natively, or the IP address of your VM/VPS/etc) http://127.0.0.1:8000 in your web browser.
