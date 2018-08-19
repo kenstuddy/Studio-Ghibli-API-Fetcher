@@ -242,7 +242,7 @@ class Api
 
             $this->setHttpCode(curl_getinfo($this->getCurl(), CURLINFO_HTTP_CODE));
 
-            //Check for HTTP 200 OK response code
+            //Check for HTTP 200 OK response code. The error variable gets set to this exception in the catch statement.
             if ($this->getHttpCode() !== 200) {
                 throw new \Exception("An error has occurred, status code: " . $this->getHttpCode());
             }
