@@ -29,7 +29,7 @@ class Api
     /**
      * @var array
      */
-    private $resultArray = array();
+    private $resultArray = [];
     /**
      * @var string
      */
@@ -236,10 +236,12 @@ class Api
             if ($this->getReturnTransfer()) {
                 curl_setopt($this->getCurl(), CURLOPT_RETURNTRANSFER, 1);
             }
+            
             $this->setResult(curl_exec($this->getCurl()));
 
             $this->setResultArray($this->getResult());
 
+            //Set the HTTP response code based on the response of the API call.
             $this->setHttpCode(curl_getinfo($this->getCurl(), CURLINFO_HTTP_CODE));
 
             //Check for HTTP 200 OK response code. The error variable gets set to this exception in the catch block.

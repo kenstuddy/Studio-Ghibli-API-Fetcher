@@ -1,17 +1,19 @@
 function popup(filmId)
 {
-    var response = "";
+    var title = "";
+    var description = "";
     $.ajax({
         type:'GET',
         url:'fulldescription.php?film='+filmId,
         success:function(data) {
-            response = data.split("<br/>");
-            $("#dialog").html(response[0]);
+            title = data.title;
+            description = data.description;
+            $("#dialog").html(description);
         }
     });
     $(function(){
         $("#dialog").delay(500).queue(function(next){
-            $(this).dialog().dialog('option', 'title', response[1]);
+            $(this).dialog().dialog('option', 'title', title);
             next();
         });
     });
