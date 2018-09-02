@@ -1,8 +1,9 @@
 # Studio-Ghibli-API-Fetcher
-Web application displaying movie descriptions and titles from a RESTful API. Created using PHP and JavaScript with jQuery and jQuery UI. 
+Web application displaying movie descriptions and titles from a RESTful API. Created using PHP and JavaScript with Vue (converted from jQuery and jQuery UI). 
 
 # Requirements
 * PHP >= 7.0.0
+* Node >= 6.0.0
 * cURL PHP Extension
 
 # How to Install
