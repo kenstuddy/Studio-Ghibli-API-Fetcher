@@ -12,14 +12,14 @@ window.Vue = require('vue');
 import MovieModal from './components/MovieModal';
 
 const Modal = {
-    install (Vue) {
+    install(Vue) {
         this.event = new Vue();
         Vue.prototype.$modal = {
-            show (modal, params = {}) {
+            show(modal, params = {}) {
                 //Emit the show event of the modal.
                 Modal.event.$emit('show', modal, params);
             },
-            hide (modal) {
+            hide(modal) {
                 //Emit the hide event of the modal.
                 Modal.event.$emit('hide', modal);
             },
