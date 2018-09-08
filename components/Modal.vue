@@ -10,7 +10,7 @@
 
 <script>
     export default {
-        data () {
+        data() {
             return {
                 params: {}, //This will contain any parameters we want to pass to the parent modal.
                 visible: false //Show the modal when this is true.
@@ -22,7 +22,7 @@
                 type: String //The name must be a string.
             }
         },
-        beforeMount () {
+        beforeMount() {
             //This is the event handler for the show event, this shows the modal.
             this.$modal.$event.$on('show', (modal, params) => {
                 if (this.name === modal) {
@@ -43,7 +43,7 @@
                 }
             });
         },
-        mounted () {
+        mounted() {
             document.addEventListener('keydown', (e) => {
                 //If the modal is visible and the keyCode is 27 (the keyCode for escape), call the hide function of the modal.
                 if (this.visible && e.keyCode === 27) {
