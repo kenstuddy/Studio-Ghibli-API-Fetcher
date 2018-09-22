@@ -232,7 +232,8 @@ class Api
                 break;
 
             }
-
+            
+            //If return transfer is true then return the content as a string, otherwise it will simply output it directly.
             if ($this->getReturnTransfer()) {
                 curl_setopt($this->getCurl(), CURLOPT_RETURNTRANSFER, 1);
             }
