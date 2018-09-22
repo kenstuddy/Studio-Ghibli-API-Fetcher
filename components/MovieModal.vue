@@ -9,7 +9,7 @@
             <div>
                 {{ description }}
             </div>
-		</template>
+	</template>
     </Modal>
 </template>
 
