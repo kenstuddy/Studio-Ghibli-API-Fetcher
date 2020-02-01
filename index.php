@@ -22,10 +22,12 @@
                 <? if (isset($resultArray)): ?>
                     <?= "<div class='cards'>" ?>
                         <? foreach($resultArray as $key => $value): ?>
-                            <?= "<div class='card'>" ?>
-                            <?= "<h1>" . $value['title'] . "</h1>" ?>
-                            <?= "<p @click.prevent=\"openModal('$key')\"> " . substr($value['description'],0,300) . "... </p>" ?>
-                            <?= "</div>" ?>
+                            <? if (!empty($value) && !empty($key)): ?>
+                                <?= "<div class='card'>" ?>
+                                <?= "<h1>" . $value['title'] . "</h1>" ?>
+                                <?= "<p @click.prevent=\"openModal('$key')\"> " . substr($value['description'],0,300) . "... </p>" ?>
+                                <?= "</div>" ?>
+                            <? endif; ?>    
                         <? endforeach; ?>
                     <?= "</div>" ?>
                 <? endif; ?>
