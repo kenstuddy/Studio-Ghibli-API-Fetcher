@@ -21,14 +21,19 @@
                 <movie-modal></movie-modal>
                 <? if (isset($resultArray)): ?>
                     <?= "<div class='cards'>" ?>
+                        <? $file = fopen('output.csv', 'w'); ?>
+                        <? fputcsv($file, array("Studio Ghibli Data")); ?>
+                        <? fputcsv($file, array("Title", "Description")); ?>
                         <? foreach($resultArray as $key => $value): ?>
                             <? if (!empty($value) && !empty($key)): ?>
+                                <? fputcsv($file, array($value['title'], $value['description'])) ?>
                                 <?= "<div class='card'>" ?>
                                 <?= "<h1>" . $value['title'] . "</h1>" ?>
                                 <?= "<p @click.prevent=\"openModal('$key')\"> " . substr($value['description'],0,300) . "... </p>" ?>
                                 <?= "</div>" ?>
                             <? endif; ?>    
                         <? endforeach; ?>
+                        <? fclose($file); ?>
                     <?= "</div>" ?>
                 <? endif; ?>
                 <? if (!empty($ghibli->getError())) : ?>
