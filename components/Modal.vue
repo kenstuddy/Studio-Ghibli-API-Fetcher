@@ -77,8 +77,14 @@
         z-index: 20;
     }
     .modal-close {
-        margin: -25px 0 0 400px; 
+        margin: -25px 0 0 250px; 
     }
+    @media (min-width: 1200px) {
+        .modal-close {
+            margin: -25px 0 0 400px; 
+        }
+    }
+    
     .button-close {
         color: #aaa;
         float: right;
