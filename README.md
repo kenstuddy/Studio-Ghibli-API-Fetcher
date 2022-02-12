@@ -3,7 +3,7 @@ Web application displaying movie descriptions and titles from a RESTful API. Cre
 
 # Requirements
 * PHP >= 7.0.0
-* Node >= 6.0.0
+* Node >= 12.14.0
 * cURL PHP Extension
 
 # How to Install
