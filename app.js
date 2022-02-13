@@ -1,7 +1,7 @@
 /** 
- * Here we pull in the Vue dependency from node_modules and assign it to our JavaScript global window object in a property called Vue.
+ * Here we pull in the Vue dependency from node_modules.
  */
-window.Vue = require('vue');
+import Vue from 'vue';
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

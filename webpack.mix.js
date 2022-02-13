@@ -11,7 +11,7 @@ let mix = require('laravel-mix');
  |
  */
 
-mix.styles('style.css', 'dist/app.css').js('app.js', 'dist/app.js');
+mix.styles('style.css', 'dist/app.css').js('app.js', 'dist/app.js').vue({ version: 2 });
 
 // Full API
 // mix.js(src, output);
