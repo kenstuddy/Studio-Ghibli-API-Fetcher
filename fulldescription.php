@@ -1,7 +1,7 @@
 <?php
     require "Api.php";
     if (isset($_GET['film']) && ($_GET['film'] == 0 || !empty($_GET['film']))) {
-        $ghibli = new Api("GET", "https://ghibliapi.herokuapp.com/films", true);
+        $ghibli = new Api("GET", "https://ghibliapi.vercel.app/films", true);
         $ghibli->callApi();
         $resultArray = $ghibli->getResultArray();
         if (!empty($ghibli->getError())) {
@@ -16,5 +16,5 @@
                 'description' => $resultArray[$_GET['film']]['description'],
             ]);
         }
-    } 
+    }
 ?>
