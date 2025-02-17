@@ -31,7 +31,7 @@
                                 <?php echo "<h1>" . $value['title'] . "</h1>" ?>
                                 <?php echo "<p @click.prevent=\"openModal('$key')\"> " . substr($value['description'],0,300) . "... </p>" ?>
                                 <?php echo "</div>" ?>
-                            <?php endif; ?>    
+                            <?php endif; ?>
                         <?php endforeach; ?>
                         <?php fclose($file); ?>
                     <?php echo "</div>" ?>
