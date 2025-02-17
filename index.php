@@ -1,6 +1,6 @@
 <?php
     require "Api.php";
-    $ghibli = new Api("GET", "https://ghibliapi.herokuapp.com/films", true);
+    $ghibli = new Api("GET", "https://ghibliapi.vercel.app/films", true);
     $ghibli->callApi();
     $resultArray = $ghibli->getResultArray();
 ?>
