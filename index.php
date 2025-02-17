@@ -19,28 +19,28 @@
             <img src="logo.png"/>
             <div class="container">
                 <movie-modal></movie-modal>
-                <? if (isset($resultArray)): ?>
-                    <?= "<div class='cards'>" ?>
-                        <? $file = fopen('output.csv', 'w'); ?>
-                        <? fputcsv($file, array("Studio Ghibli Data")); ?>
-                        <? fputcsv($file, array("Title", "Description")); ?>
-                        <? foreach($resultArray as $key => $value): ?>
-                            <? if (!empty($value) && !empty($key)): ?>
-                                <? fputcsv($file, array($value['title'], $value['description'])) ?>
-                                <?= "<div class='card'>" ?>
-                                <?= "<h1>" . $value['title'] . "</h1>" ?>
-                                <?= "<p @click.prevent=\"openModal('$key')\"> " . substr($value['description'],0,300) . "... </p>" ?>
-                                <?= "</div>" ?>
-                            <? endif; ?>    
-                        <? endforeach; ?>
-                        <? fclose($file); ?>
-                    <?= "</div>" ?>
-                <? endif; ?>
-                <? if (!empty($ghibli->getError())) : ?>
-                    <?= "<p id='error'>" ?>
-                    <?= $ghibli->getError() ?>
-                    <?= "</p>" ?>
-                <? endif; ?>
+                <?php if (isset($resultArray)): ?>
+                    <?php echo "<div class='cards'>" ?>
+                        <?php $file = fopen('output.csv', 'w'); ?>
+                        <?php fputcsv($file, array("Studio Ghibli Data")); ?>
+                        <?php fputcsv($file, array("Title", "Description")); ?>
+                        <?php foreach($resultArray as $key => $value): ?>
+                            <?php if (!empty($value) && !empty($key)): ?>
+                                <?php fputcsv($file, array($value['title'], $value['description'])) ?>
+                                <?php echo "<div class='card'>" ?>
+                                <?php echo "<h1>" . $value['title'] . "</h1>" ?>
+                                <?php echo "<p @click.prevent=\"openModal('$key')\"> " . substr($value['description'],0,300) . "... </p>" ?>
+                                <?php echo "</div>" ?>
+                            <?php endif; ?>    
+                        <?php endforeach; ?>
+                        <?php fclose($file); ?>
+                    <?php echo "</div>" ?>
+                <?php endif; ?>
+                <?php if (!empty($ghibli->getError())) : ?>
+                    <?php echo "<p id='error'>" ?>
+                    <?php echo $ghibli->getError() ?>
+                    <?php echo "</p>" ?>
+                <?php endif; ?>
             </div>
         </div>
         <script src="dist/app.js"></script>
