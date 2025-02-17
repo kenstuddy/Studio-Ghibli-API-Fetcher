@@ -1,4 +1,4 @@
-<?php 
+<?php
     require "Api.php";
     $ghibli = new Api("GET", "https://ghibliapi.herokuapp.com/films", true);
     $ghibli->callApi();
